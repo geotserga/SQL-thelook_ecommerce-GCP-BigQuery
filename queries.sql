@@ -1,4 +1,4 @@
--- 1. Active Users (last 7 Days)
+-- 1. Total Active Users (last 7 Days)
 SELECT COUNT(DISTINCT user_id) AS users_last_week
 FROM `bigquery-public-data.thelook_ecommerce.orders`
 WHERE DATE(created_at) >= DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY);
@@ -95,4 +95,5 @@ FROM (
     ON o.order_id = oi.order_id
   GROUP BY order_date
 ) AS daily
+
 ORDER BY order_date;
